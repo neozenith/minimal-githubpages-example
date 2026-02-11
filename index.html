@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Every HTML page needs these two meta tags -->
+    <meta charset="UTF-8">                                    <!-- Use modern text encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Scale properly on mobile -->
+
+    <title>My Website</title>                                 <!-- Text shown in the browser tab -->
+
+    <!-- Emoji favicon hack: embeds an SVG with a single emoji as the browser tab icon (no .ico file needed) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+
+    <!-- Tailwind CSS: a utility-first CSS framework loaded from a CDN (no install needed) -->
+    <!-- For a proper production website please see https://tailwindcss.com/ on how to use it with a proper build system -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: "class" };</script> <!-- Enable dark mode via a "dark" class on <html> -->
+
+    <link rel="stylesheet" href="styles.css">                 <!-- Our custom styles (currently empty) -->
+</head>
+
+<!--
+  TailwindCSS Body classes explained:
+    font-sans        → Use the operating system's default sans-serif font
+    min-h-screen     → Make the body at least as tall as the browser window
+    flex             → Use flexbox layout
+    items-center     → Vertically centre the content
+    justify-center   → Horizontally centre the content
+    bg-white         → White background in light mode
+    text-gray-800    → Dark grey text in light mode
+    dark:bg-gray-900 → Near-black background in dark mode
+    dark:text-gray-200 → Light grey text in dark mode
+-->
+<body class="font-sans min-h-screen flex items-center justify-center bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-200">
+
+<!-- <main> wraps the primary content of the page and constrains its width -->
+<main class="max-w-xl px-5">
+
+    <!-- Header row: title on the left, theme toggle on the right -->
+    <div class="flex justify-between items-center mb-4">
+        <h1 class="text-3xl font-bold">Minimal GitHub Pages Example</h1>
+
+        <!-- Theme toggle button. JavaScript listens for clicks on this id. -->
+        <button id="theme-toggle" class="p-2 rounded border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer" aria-label="Toggle theme">
+            <!-- Moon icon: visible in light mode, hidden in dark mode -->
+            <i data-lucide="moon" class="w-4 h-4 dark:hidden"></i>
+            <!-- Sun icon: hidden in light mode, visible in dark mode -->
+            <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+        </button>
+    </div>
+
+    <p class="mb-4">Toggle the theme using the button above to see JavaScript in action.</p>
+
+    <!-- This paragraph starts empty. JavaScript fills it with a message when you click the toggle. -->
+    <p id="message" class="text-green-600 dark:text-green-400 font-bold"></p>
+
+    <!--
+      Scripts are loaded at the bottom of the page so that all the HTML
+      elements above already exist by the time the JavaScript runs.
+    -->
+    <script src="https://unpkg.com/lucide@latest"></script> <!-- Icon library: converts <i data-lucide="..."> into SVGs -->
+    <script src="scripts.js"></script>                      <!-- Our custom JavaScript -->
+</main>
+</body>
+</html>
